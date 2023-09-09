@@ -179,7 +179,8 @@ export default class Keeper {
         params: [`0x${(startBlock + i).toString(16)}`, true],
         id: i,
         jsonrpc: "2.0",
-      }));
+      }
+      ));
 
     // Execute request for batch blocks + transactions
     const {
