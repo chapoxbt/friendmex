@@ -1,0 +1,21 @@
+@font-face {
+    font-family: 'SubRegular';
+    src: url('/fonts/interRegular.woff') format('woff'),
+         url('/fonts/interBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+@font-face {
+  font-family: 'SubAlt';
+  src: url('/fonts/interAlt.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+    font-family: 'SubMono';
+    src: url('/fonts/RobotoMono.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }

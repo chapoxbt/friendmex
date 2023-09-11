@@ -3,6 +3,7 @@ import type { AppProps } from "next/app";
 
 // CSS imports
 import "global.css";
+import "fonts.css";
 import "react-resizable/css/styles.css";
 import "react-grid-layout/css/styles.css";
 import "@rainbow-me/rainbowkit/styles.css";
@@ -39,7 +40,9 @@ export default function FriendMEX({ Component, pageProps }: AppProps) {
     // Wrap in RainbowKit providers
     <WagmiConfig config={wagmiConfig}>
       <RainbowKitProvider chains={chains} theme={darkTheme()}>
-        <Component {...pageProps} />
+        <div className="bg-sub-main"> {/* <-- Added this line */}
+          <Component {...pageProps} />
+        </div> {/* <-- Added this line */}
       </RainbowKitProvider>
     </WagmiConfig>
   );

@@ -8,42 +8,12 @@ export default function Header() {
 
   return (
     <div className="sticky top-0 z-50">
-      {/* Sub header */}
-      <div className="bg-black border-b border-zinc-800 flex items-center justify-center py-0.5">
-        <span className="text-xs text-zinc-400">
-          An{" "}
-          <a
-            href="https://github.com/anish-agnihotri/friendmex"
-            target="_blank"
-            rel="noopen noreferrer"
-            className="hover:opacity-70 transition-opacity underline"
-          >
-            open-source
-          </a>{" "}
-          project by{" "}
-          <a
-            href="https://anishagnihotri.com"
-            target="_blank"
-            rel="noopen noreferrer"
-            className="hover:opacity-70 transition-opacity underline"
-          >
-            Anish Agnihotri
-          </a>
-          .
-        </span>
-      </div>
 
       {/* Main header */}
-      <div className="flex justify-between h-14 px-4 items-center bg-black">
+      <div className="flex justify-between h-14 px-4 items-center bg-bitmex-widget">
         <div>
-          <Link href="/" className="hover:opacity-70 transition-opacity">
-            <Image
-              src="/vectors/logo.svg"
-              height={30}
-              width={165}
-              alt="FriendMEX logo"
-              priority
-            />
+          <Link href="/" className="flex items-center hover:opacity-70 transition-opacity">
+            <span className="text-lg text-white font-mono font-semi">tribe.markets</span>
           </Link>
         </div>
 

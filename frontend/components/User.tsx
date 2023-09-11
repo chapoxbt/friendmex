@@ -46,8 +46,8 @@ export default function User({
     data.supply / 96000;
 
   return (
-    <div className="flex flex-col border rounded-lg bg-white">
-      {/* Top section */}
+    <div className="flex flex-col border border-sub-alt border-opacity-20 rounded-lg">
+      {/* Top section profile cards ^*/}
       <div className="p-2 flex flex-row items-center justify-between w-full">
         {/* Top left (image, handle, address) */}
         <div className="flex items-center">
@@ -59,7 +59,7 @@ export default function User({
             className="rounded-md"
           />
 
-          <div className="flex text-xs flex-col pl-2 [&>a:hover]:opacity-70">
+          <div className="flex text-xs text-white flex-col pl-2 [&>a:hover]:opacity-70">
             {/* Username */}
             <a href={usernameLink} target="_blank" rel="noopener noreferrer">
               {username}
@@ -122,7 +122,7 @@ export default function User({
 
       {/* Bottom section */}
       {!isMinimal && (
-        <div className="flex border-t items-center justify-between px-2 py-1 text-xs text-zinc-500">
+        <div className="flex border-t border-sub-alt border-opacity-20 items-center justify-between px-2 py-1 text-xs text-zinc-500">
           <span>
             {data.supply} key{data.supply == 1 ? "" : "s"}
           </span>

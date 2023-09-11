@@ -56,14 +56,25 @@ module.exports = {
         "tremor-title": ["1.125rem", { lineHeight: "1.75rem" }],
         "tremor-metric": ["1.875rem", { lineHeight: "2.25rem" }],
       },
+      fontFamily: {
+        'sub-regular': ['SubRegular', 'sans-serif'],
+        'sub-dif': ['SubAlt', 'serif'],
+        'mono': ['SubMono', 'monospace'],
+      },
+      fontWeight: {
+        'light': 300,
+      },
       colors: {
+        'sub-main': "#303030",
+        'sub-alt': "#949e9c",
         buy: "#00A969",
         "buy-30": "#00A9690D",
         sell: "#DF0E29",
         "sell-30": "#DF0E290D",
-        "bitmex-widget": "#FAFAFA",
-        "bitmex-strong": "#EAECEF",
+        "bitmex-widget": "#000000", //module bkgs
+        "bitmex-strong": "#000000",
         "bitmex-strong-border": "#CBD0D7",
+        "alt": "#2c2c2e",
         tremor: {
           brand: {
             faint: "#eff6ff", // blue-50

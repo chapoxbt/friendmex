@@ -23,7 +23,7 @@ export default function RecentTokenTrades() {
 
   return (
     <Card
-      title="Token trades"
+      title="Trade History"
       updated={`${
         user.username ? `@${user.username}` : truncateAddress(user.address, 6)
       }, ${renderTimeSince(lastChecked)} ago`}

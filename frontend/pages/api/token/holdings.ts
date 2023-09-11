@@ -10,10 +10,12 @@ type CachedHoldings = { lastChecked: Date; holdings: Holding[] };
 function processHoldings(
   trades: ExtendedTrade[],
   existing?: Holding[]
+  
 ): Holding[] {
   // Setup balances and users
   let subjectToBalance: Record<string, number> = {};
   let subjectToUser: Record<string, User> = {};
+  
 
   // If existing cached holdings
   if (existing) {
@@ -64,30 +66,26 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  // Collect token address
+  console.log("Entered function");
+  
   let { address } = req.query;
   if (!address) return res.status(400).json({ error: "Missing token address" });
-  // Only accept first query parameter
+  
   if (Array.isArray(address)) address = address[0];
   address = address.toLowerCase();
 
   let data: CachedHoldings;
   try {
-    // Check for cached holdings
     const cachedString = await cache.get(`holdings_${address}`);
+    console.log("Cached string:", cachedString);
 
-    // If cache exists
     if (cachedString) {
-      // Parse cache
-      const parseString: Omit<CachedHoldings, "lastChecked"> & {
-        lastChecked: string;
-      } = JSON.parse(cachedString);
+      const parseString = JSON.parse(cachedString);
       const parsed: CachedHoldings = {
         ...parseString,
         lastChecked: new Date(parseString.lastChecked),
       };
 
-      // Collect new trades since last checked date
       const trades: ExtendedTrade[] = await db.trade.findMany({
         where: {
           fromAddress: address,
@@ -102,10 +100,9 @@ export default async function handler(
           subjectUser: true,
         },
       });
+      console.log("New trades:", trades);
 
-      // If no new trades, simply return
       if (trades.length === 0) {
-        // Update last checked time
         const ok = await cache.set(
           `holdings_${address}`,
           JSON.stringify({
@@ -117,13 +114,11 @@ export default async function handler(
         return res.status(200).send(parsed.holdings);
       }
 
-      // Parse new trades
       data = {
         lastChecked: new Date(),
         holdings: processHoldings(trades, parsed.holdings),
       };
     } else {
-      // If no cache, collect all trades by token address
       const trades: ExtendedTrade[] = await db.trade.findMany({
         where: {
           fromAddress: address,
@@ -135,26 +130,23 @@ export default async function handler(
           subjectUser: true,
         },
       });
+      console.log("All trades:", trades);
 
-      // Assign data
       data = {
         lastChecked: new Date(),
         holdings: processHoldings(trades),
       };
     }
 
-    // Store new changes in Redis
     const ok = await cache.set(`holdings_${address}`, JSON.stringify(data));
     if (!ok) throw new Error("Could not save to Redis");
 
     return res.status(200).json(data.holdings);
   } catch (e: unknown) {
-    // Catch errors
+    console.error("Error:", e);
     if (e instanceof Error) {
       return res.status(500).json({ message: e.message });
     }
-
-    // Return default error
     return res.status(500).json({ message: "Internal server error" });
   }
 }

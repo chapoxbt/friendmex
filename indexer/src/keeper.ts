@@ -139,7 +139,7 @@ export default class Keeper {
     }[] = [];
 
     // Execute batch data request in chunks of 950
-    for (const chunk of [...chunks(batch, 950)]) {
+    for (const chunk of [...chunks(batch, 100)]) {
       // Execute request for batch tx data
       const {
         data,
@@ -150,7 +150,7 @@ export default class Keeper {
             status: "0x0" | "0x1";
           };
         }[];
-      } = await this.rpc.post("/", chunk);
+      } = await this.rpc.post("", chunk);
 
       // Concat results
       txData.push(...data);

@@ -76,8 +76,8 @@ export default function Holdings() {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Friend</TableHead>
-                  <TableHead>Balance</TableHead>
+                  <TableHead className=" font-mono">Friend</TableHead>
+                  <TableHead className=" font-mono">Balance</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -90,7 +90,7 @@ export default function Holdings() {
                         image={holding.twitterPfpUrl}
                       />
                     </TableCell>
-                    <TableCell>{holding.balance}</TableCell>
+                    <TableCell className="text-white">{holding.balance}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>

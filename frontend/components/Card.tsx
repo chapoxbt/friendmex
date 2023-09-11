@@ -12,9 +12,9 @@ export default function Card({
 }) {
   return (
     // Card component
-    <div className="flex flex-col bg-white border-[1px] border-bitmex-strong-border h-full">
+    <div className="flex flex-col bg-bitmex-strong border-[1px] border-alt h-full rounded-[8px]">
       {/* Card header */}
-      <div className="flex items-center justify-between bg-bitmex-strong py-0.5">
+      <div className="flex items-center justify-between py-1">
         {/* Card header: left */}
         <div className="flex items-center">
           {/* Resizer */}
@@ -23,7 +23,7 @@ export default function Card({
           </div>
 
           {/* Component title */}
-          <span className="pl-1 text-sm font-bold">{title}</span>
+          <span className="pl-1 text-sm text-white font-semi font-mono">{title}</span>
         </div>
 
         {/* Card header: right */}
@@ -35,7 +35,7 @@ export default function Card({
       </div>
 
       {/* Card content */}
-      <div className="bg-bitmex-widget overflow-auto flex-1">{children}</div>
+      <div className=" overflow-auto flex-1 hide-scrollbar">{children}</div>
     </div>
   );
 }

@@ -23,7 +23,7 @@ export default function Address({
   return (
     <Button
       onClick={() => setUser({ address, username, image })}
-      className="h-8 pl-1 pr-2 py-0 bg-white border text-black rounded-md shadow-none text-sm font-normal hover:bg-white hover:opacity-70 transition-opacity"
+      className="h-8 pl-1 pr-2 py-0 bg-bitmex-widget border-bitmex-strong-border text-white rounded-md shadow-none text-sm font-normal hover:bg-white hover:opacity-70 transition-opacity"
     >
       <div className="flex items-center">
         <img

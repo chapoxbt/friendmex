@@ -73,7 +73,7 @@ export default function BuySell() {
         ) : (
           <div className="flex flex-col h-full gap-3">
             <div>
-              <span className="flex break-word text-sm items-center">
+              <span className="flex break-word text-sm text-white items-center">
                 You own {Number(ownedAmount ?? 0)} key(s) of{" "}
                 <span className="pl-2">
                   <Address

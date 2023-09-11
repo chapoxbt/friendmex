@@ -47,18 +47,18 @@ export default function TradeTable({
     // Calculate trade cost
     return currency === Currency.USD
       ? `$${parseUSD((Number(cost) / 1e18) * eth)}`
-      : `${(Number(cost) / 1e18).toFixed(6)} Ξ`;
+      : `${(Number(cost) / 1e18).toFixed(6)} ETH`;
   };
 
   return (
-    <Table className="min-w-[950px] [&_td]:py-1">
+    <Table className="min-w-[950px] [&_td]:py-1 text-white">
       <TableHeader className="sticky top-0">
         <TableRow>
-          <TableHead>Hash</TableHead>
+          <TableHead>Transaction Hash</TableHead>
           <TableHead>Time Since</TableHead>
           <TableHead>Block #</TableHead>
           <TableHead>From</TableHead>
-          <TableHead>Token</TableHead>
+          <TableHead>To</TableHead>
           <TableHead>Amount</TableHead>
           <TableHead>Net</TableHead>
         </TableRow>
@@ -74,12 +74,12 @@ export default function TradeTable({
                   href={`https://basescan.org/tx/${trade.hash}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="underline"
+                  className="underline font-mono text-sub-alt hover:text-white"
                 >
                   {truncateAddress(trade.hash, 6)}
                 </a>
               </TableCell>
-              <TableCell suppressHydrationWarning={true}>
+              <TableCell suppressHydrationWarning={true} className="font-mono text-sub-alt">
                 {formatDistance(new Date(trade.timestamp * 1000), new Date(), {
                   addSuffix: true,
                 })}
@@ -89,19 +89,19 @@ export default function TradeTable({
                   href={`https://basescan.org/block/${trade.blockNumber}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="underline"
+                  className="underline text-sub-alt font-mono hover:text-white"
                 >
                   {trade.blockNumber}
                 </a>
               </TableCell>
-              <TableCell>
+              <TableCell className="font-mono">
                 <Address
                   address={trade.fromAddress}
                   username={trade.fromUser.twitterUsername}
                   image={trade.fromUser.twitterPfpUrl}
                 />
               </TableCell>
-              <TableCell>
+              <TableCell className="font-mono">
                 <Address
                   address={trade.subjectAddress}
                   username={trade.subjectUser.twitterUsername}
@@ -109,14 +109,16 @@ export default function TradeTable({
                 />
               </TableCell>
               <TableCell>
-                {trade.isBuy ? "+" : "-"}
-                {trade.amount}
+                <span className="font-mono">
+                  {trade.isBuy ? "+" : "-"}
+                  {trade.amount}
+                </span>
               </TableCell>
               <TableCell>
                 {trade.isBuy ? (
-                  <span className="text-buy">{tradeCost}</span>
+                  <span className="text-buy font-mono">{tradeCost}</span>
                 ) : (
-                  <span className="text-sell">{tradeCost}</span>
+                  <span className="text-sell font-mono">{tradeCost}</span>
                 )}
               </TableCell>
             </ColoredRow>

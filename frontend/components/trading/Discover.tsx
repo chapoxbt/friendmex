@@ -89,7 +89,7 @@ export default function Leaderboard({
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search friends..."
-          className="h-8 w-[calc(100%-2px)] fixed focus-visible:ring-0 shadow-none border-l-0 border-r-0 border-t-0 border-b rounded-none bg-zinc-100"
+          className="h-8 text-sub-alt w-[calc(100%-2px)] fixed focus-visible:ring-0 shadow-none border-l-0 border-r-0 border-t-0 border-b border-sub-alt border-opacity-20 rounded-none bg-bitmex-widget"
         />
 
         <div className="pt-11 pb-3 px-3 flex">

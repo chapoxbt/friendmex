@@ -4,6 +4,7 @@ import constants from "utils/constants";
 import type { StateUser } from "state/global";
 import { WidthProvider, Responsive } from "react-grid-layout";
 
+
 // Trading views
 import Chart from "components/trading/Chart";
 import Discover from "components/trading/Discover";
@@ -78,6 +79,7 @@ export default function Home({
         layouts={layout}
         draggableHandle=".drag-handle"
         cols={{ lg: 36, md: 24, sm: 12, xs: 6, xxs: 3 }}
+        margin={[2, 2]} // [horizontal, vertical] default is [10, 10]
       >
         {/* Discover */}
         <div key="discover">
