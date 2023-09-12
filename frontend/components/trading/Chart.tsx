@@ -6,7 +6,12 @@ import { usePollData } from 'utils/usePollData';
 import { Global, StateUser } from 'state/global';
 import { createChart } from 'lightweight-charts';
 
-function aggregateTo4HTicks(data) {
+interface DataItem {
+  timestamp: string;
+  'Price (ETH)': number;
+}
+
+function aggregateTo4HTicks(data: DataItem[]) {
   const aggregatedData = [];
   let currentInterval = null;
   let open = null;
