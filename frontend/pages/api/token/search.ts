@@ -5,6 +5,9 @@ import type { UserInfo } from "components/User";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   // Collect search query
   const { search }: { search: string } = req.body;
   if (!search) return res.status(400).json({ error: "Missing search query" });
